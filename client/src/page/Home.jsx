@@ -1,15 +1,24 @@
 import React from "react"
 
+import { useGlobalContext } from "../context"
+import { PageHOC } from "../components"
+
 const Home = () => {
+  const { contract, walletAddress } = useGlobalContext()
   return (
     <div>
-      <h1 className="text-5xl p-3">Hour Zero</h1>
-      <h2 className="text-3xl p-3">
-        Choose Your Champions, Make Your Move, And Be A Hero In The Justice League NFT Strategy Card Game.
-      </h2>
-      <p className="text-xl p-3">Made with 💜 by JavaScript Mastery</p>
+      <h1 className="text-white text-3xl">{walletAddress}</h1>
     </div>
   )
 }
 
-export default Home
+export default PageHOC(
+  Home,
+  <>
+    Welcome To HZ <br /> A Web3 NFT TCG Game
+  </>,
+  <>
+    Conect Your Wallet To Start Playng <br />
+    the Ultimate Web3 Card Game
+  </>
+)
